@@ -295,7 +295,22 @@ $classi = [
         <h1 class="text-center">Snack 04</h1>
     </header>
     <!-- Main -->
-    <main></main>
+    <main>
+        <?php foreach ($classi as $key => $value) { ?>
+            <h2><?= $key ?></h2>
+            <?php foreach ($value as $item) { ?>
+                <ul>
+                    <li><?= $item['id'] ?></li>
+                    <li><?= $item['nome'] ?></li>
+                    <li><?= $item['cognome'] ?></li>
+                    <li><?= $item['anni'] ?></li>
+                    <li><?= $item['voto_medio'] ?></li>
+                    <li><?= $item['linguaggio_preferito'] ?></li>
+                    <li><?= $item['immagine'] ?></li>
+                </ul>
+            <?php } ?>
+        <?php } ?>
+    </main>
 </body>
 
 </html>
