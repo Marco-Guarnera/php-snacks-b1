@@ -2,14 +2,21 @@
 
 // Fase di preparazione
 
-// Variabili
-
 // Struttura dati
-
 include_once __DIR__ . '/data-structure.php';
 
-// Fase di raccolta dati
 // Fase di elaborazione
+
+$filtered_array = [];
+
+foreach ($classi as $key => $value) {
+    $filtered_array[$key] = [];
+    foreach ($value as $item) {
+        if ($item['voto_medio'] >= 6) {
+            $filtered_array[$key][] = $item;
+        }
+    }
+}
 
 ?>
 
@@ -36,20 +43,18 @@ include_once __DIR__ . '/data-structure.php';
     </header>
     <!-- Main -->
     <main>
-        <?php foreach ($classi as $key => $value) { ?>
+        <?php foreach ($filtered_array as $key => $value) { ?>
             <h2><?= $key ?></h2>
             <?php foreach ($value as $item) { ?>
-                <?php if ($item['voto_medio'] >= 6) { ?>
-                    <ul>
-                        <li><?= $item['id'] ?></li>
-                        <li><?= $item['nome'] ?></li>
-                        <li><?= $item['cognome'] ?></li>
-                        <li><?= $item['anni'] ?></li>
-                        <li><?= $item['voto_medio'] ?></li>
-                        <li><?= $item['linguaggio_preferito'] ?></li>
-                        <li><?= $item['immagine'] ?></li>
-                    </ul>
-                <?php } ?>
+                <ul>
+                    <li><?= $item['id'] ?></li>
+                    <li><?= $item['nome'] ?></li>
+                    <li><?= $item['cognome'] ?></li>
+                    <li><?= $item['anni'] ?></li>
+                    <li><?= $item['voto_medio'] ?></li>
+                    <li><?= $item['linguaggio_preferito'] ?></li>
+                    <li><?= $item['immagine'] ?></li>
+                </ul>
             <?php } ?>
         <?php } ?>
     </main>
